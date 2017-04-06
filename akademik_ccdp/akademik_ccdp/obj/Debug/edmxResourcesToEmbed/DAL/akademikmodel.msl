@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="akademik_dbModelStoreContainer" CdmEntityContainer="akademik_dbEntities1">
+    <EntitySetMapping Name="instrukturs">
+      <EntityTypeMapping TypeName="akademik_dbModel.instruktur">
+        <MappingFragment StoreEntitySet="instruktur">
+          <ScalarProperty Name="kode_instruktur" ColumnName="kode_instruktur" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="telp" ColumnName="telp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mahasiswas">
+      <EntityTypeMapping TypeName="akademik_dbModel.mahasiswa">
+        <MappingFragment StoreEntitySet="mahasiswa">
+          <ScalarProperty Name="nim" ColumnName="nim" />
+          <ScalarProperty Name="kode_program" ColumnName="kode_program" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="tgl_lahir" ColumnName="tgl_lahir" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="telp" ColumnName="telp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="akademik_dbModel.mahasiswa">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="akademik_dbModel.Store.TambahMahasiswa">
+            <ScalarProperty Name="telp" ParameterName="telp" />
+            <ScalarProperty Name="alamat" ParameterName="alamat" />
+            <ScalarProperty Name="tgl_lahir" ParameterName="tgl_lahir" />
+            <ScalarProperty Name="nama" ParameterName="nama" />
+            <ScalarProperty Name="kode_program" ParameterName="kode_program" />
+            <ScalarProperty Name="nim" ParameterName="nim" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="akademik_dbModel.Store.UbahMahasiswa">
+            <ScalarProperty Name="telp" ParameterName="telp" Version="Current" />
+            <ScalarProperty Name="alamat" ParameterName="alamat" Version="Current" />
+            <ScalarProperty Name="tgl_lahir" ParameterName="tgl_lahir" Version="Current" />
+            <ScalarProperty Name="nama" ParameterName="nama" Version="Current" />
+            <ScalarProperty Name="kode_program" ParameterName="kode_program" Version="Current" />
+            <ScalarProperty Name="nim" ParameterName="nim" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="akademik_dbModel.Store.HapusMahasiswa">
+            <ScalarProperty Name="nim" ParameterName="nim" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="matakuliahs">
+      <EntityTypeMapping TypeName="akademik_dbModel.matakuliah">
+        <MappingFragment StoreEntitySet="matakuliah">
+          <ScalarProperty Name="kode_matakuliah" ColumnName="kode_matakuliah" />
+          <ScalarProperty Name="kode_program" ColumnName="kode_program" />
+          <ScalarProperty Name="nama_matakuliah" ColumnName="nama_matakuliah" />
+          <ScalarProperty Name="sks" ColumnName="sks" />
+          <ScalarProperty Name="semester" ColumnName="semester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nilais">
+      <EntityTypeMapping TypeName="akademik_dbModel.nilai">
+        <MappingFragment StoreEntitySet="nilai">
+          <ScalarProperty Name="kode_nilai" ColumnName="kode_nilai" />
+          <ScalarProperty Name="nim" ColumnName="nim" />
+          <ScalarProperty Name="kode_pengajaran" ColumnName="kode_pengajaran" />
+          <ScalarProperty Name="nilai1" ColumnName="nilai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pengajarans">
+      <EntityTypeMapping TypeName="akademik_dbModel.pengajaran">
+        <MappingFragment StoreEntitySet="pengajaran">
+          <ScalarProperty Name="kode_pengajaran" ColumnName="kode_pengajaran" />
+          <ScalarProperty Name="kode_instruktur" ColumnName="kode_instruktur" />
+          <ScalarProperty Name="kode_matakuliah" ColumnName="kode_matakuliah" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="programs">
+      <EntityTypeMapping TypeName="akademik_dbModel.program">
+        <MappingFragment StoreEntitySet="program">
+          <ScalarProperty Name="kode_program" ColumnName="kode_program" />
+          <ScalarProperty Name="nama_program" ColumnName="nama_program" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="TambahMahasiswa" FunctionName="akademik_dbModel.Store.TambahMahasiswa" />
+    <FunctionImportMapping FunctionImportName="TampilMahasiswa" FunctionName="akademik_dbModel.Store.TampilMahasiswa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="akademik_dbModel.TampilMahasiswa_Result">
+          <ScalarProperty Name="nim" ColumnName="nim" />
+          <ScalarProperty Name="kode_program" ColumnName="kode_program" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="tgl_lahir" ColumnName="tgl_lahir" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="telp" ColumnName="telp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UbahMahasiswa" FunctionName="akademik_dbModel.Store.UbahMahasiswa" />
+    <FunctionImportMapping FunctionImportName="HapusMahasiswa" FunctionName="akademik_dbModel.Store.HapusMahasiswa" />
+    <FunctionImportMapping FunctionImportName="TampilMahasiswa1" FunctionName="akademik_dbModel.Store.TampilMahasiswa" />
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="akademik_dbModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="akademik_dbModel.Store.Validate_User" />
+    <FunctionImportMapping FunctionImportName="ValidateUser" FunctionName="akademik_dbModel.Store.Validate_User" />
+  </EntityContainerMapping>
+</Mapping>
